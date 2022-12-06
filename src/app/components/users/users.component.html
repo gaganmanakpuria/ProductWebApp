@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h3 class="text-center my-3 ">Users</h3>
+            <button routerLink="/add_user" *ngIf="isManger('Manager')"
+                class="p-2 my-3 rounded rounded-pill btn-outline-success "> <i class="bi bi-person-plus"></i> Add
+                user</button>
+
+            <table class="table table-hover shadow shadow-lg  ">
+
+                <thead>
+                    <tr>
+                        <th>Sr No.</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Role</th>
+                        <th>User Name</th>
+                        <th>
+                            <div *ngIf="isManger('Manager')">
+                                Action
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of allUsers| paginate:{itemsPerPage:5,currentPage:p};index as j">
+                        <td>{{(p-1)*5+j+1}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.address}}</td>
+                        <td>{{user.city}}</td>
+                        <td>{{user.role}}</td>
+                        <td>{{user.userName}}</td>
+                        <td>
+                            <div *ngIf="isManger('Manager')">
+                                <a routerLink="/edit_user/{{user.id}}"><i
+                                        class="bi bi-pencil-square p-1 rounded rounded-pill btn-outline-warning fs-5"></i>
+                                </a> <a><i (click)="deleteUser(user.id)"
+                                        class="bi bi-trash3 rounded rounded-pill btn-outline-danger fs-5"></i> </a>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+
+            </table>
+            <div class="pagi text-center">
+
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+            </div>
+        </div>
+    </div>
+
+</div>

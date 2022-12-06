@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="col-md-6 mx-auto shadow shadow-lg border-rounded my-3 p-4">
+        <h3 class="text-center"> Add Product</h3>
+  
+        <form action="" [formGroup]="addProductForm" (ngSubmit)="addProductSubmitted()">
+            <div class="row">
+                <div class="col">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                    <div class="form-text text-danger text-center" *ngIf="name.errors?.['required'] && (name.touched||name.dirty)">
+                        Name is required.
+                    </div>                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="quantity">Quantiy</label>
+                    <input type="number" class="form-control" formControlName="quantity" >
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="quantity.errors?.['required'] && (quantity.touched||quantity.dirty)">
+                    Quantiy is required.
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" formControlName="price" >
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="price.errors?.['required'] && (price.touched||price.dirty)">
+                    price is required.
+                </div>
+
+            </div>
+            <!-- <div class="row">
+                <div class="col">
+                    <label for="status"> Choose status of product</label>
+                    <select formControlName="status" id="" class="form-control">
+                        <option value="" disabled>Select any one</option>
+                        <option value="Approve">Approve</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Reject">Reject</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-text text-danger text-center" *ngIf="status.errors?.['required'] && (status.touched||status.dirty)">
+                    Status is required.
+                </div>
+            </div> -->
+           
+            <div class="row">
+                <div class="col">
+                    <button type="submit" [disabled]="addProductForm.invalid" class="btn btn-success mt-3">Add Product</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

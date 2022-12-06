@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+
+#toast-container > .toast-success {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 10px;
+    margin-top: 70px;
+    width: 100%;
+}
+#toast-container > .toast-error {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 10px;
+    margin-top: 70px;
+    width: 100%;
+}

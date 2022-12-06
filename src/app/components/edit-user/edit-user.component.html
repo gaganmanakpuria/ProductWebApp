@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="col-md-6 mx-auto shadow shadow-lg border-rounded my-3 p-4">
+        <h3 class="text-center"> Edit User</h3>
+  
+        <form action="" [formGroup]="editUserForm" (ngSubmit)="editUserSubmitted()">
+            <div class="row">
+                <div class="col">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" formControlName="fullName">
+                    <div class="form-text text-danger text-center" *ngIf="FullName.errors?.['required'] && (FullName.touched||FullName.dirty)">
+                        Name is required.
+                    </div>
+                    <div class="form-text text-danger text-center" *ngIf="FullName.errors?.['pattern'] && (FullName.touched||FullName.dirty)">
+                        Alphabets are required only.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="userName">User Name</label>
+                    <input type="text" class="form-control" formControlName="userName" >
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="UserName.errors?.['required'] && (UserName.touched||UserName.dirty)">
+                    UserName is required.
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="UserName.errors?.['pattern'] && (UserName.touched||UserName.dirty)">
+                    Start with alphabets only.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="address">Address</label>
+                    <textarea name="" id="" cols="10" rows="3" class="form-control" formControlName="address"></textarea>
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="Address.errors?.['required'] && (Address.touched||Address.dirty)">
+                    Address is required.
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" formControlName="city">
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="City.errors?.['required'] && (City.touched||City.dirty)">
+                    City is required.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="m-1">Role</div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio"  value="Manager" formControlName="role"  id="manager">
+                        <label for="manager" class="form-check-label" >Manager</label>
+                    </div>
+                    
+                    <div class="form-check form-check-inline">
+                        <input type="radio" value="User" formControlName="role" id="user">
+                        <label for="user" class="form-check-label" >User</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" value="Admin" formControlName="role" id="Admin">
+                        <label for="Admin" class="form-check-label" >Admin</label>
+                    </div>
+
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="Role.errors?.['required'] && (Role.touched||Role.dirty)">
+                    Role is required.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="Password.errors?.['required'] && (Password.touched||Password.dirty)">
+                    Password is required.
+                </div>
+                <div class="form-text text-danger text-center" *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && (Password.touched||Password.dirty)">
+                    minimum 6 and maximum 15.
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <button type="submit" [disabled]="editUserForm.invalid" class="btn btn-success mt-3">Update User</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
