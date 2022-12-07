@@ -76,6 +76,7 @@ export class AppComponent {
 
   this.currentUser.next(data);
  }
+ 
   logOut = () => {
   
   localStorage.clear();
