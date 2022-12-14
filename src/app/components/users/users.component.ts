@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
       this.productAppService.getAllUsers().subscribe(res=>{
 
         this.allUsers=res.reverse();
-        console.log(this.allUsers)
+        
       })
     }
   }
@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit {
   }
  deleteUser(id:any){
   this.productAppService.removeUser(id).subscribe(res=>{
-    // console.log(res)
+    
     this.toastr.success("User Deleted Successfully","",{
                   
       positionClass:'toast-top-right'

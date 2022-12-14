@@ -22,7 +22,7 @@ export class ProductsComponent implements OnInit {
       this.productAppService.getAllProducts().subscribe(res=>{
 
         this.allProducts=res.reverse();
-        console.log(this.allProducts)
+        
       })
     }
   }
@@ -53,7 +53,7 @@ export class ProductsComponent implements OnInit {
   }
   deleteProduct(id:any){
     this.productAppService.removeProduct(id).subscribe(res=>{
-      console.log(res)
+      
       this.toastr.success("Product Deleted Successfully","",{
                   
         positionClass:'toast-top-right'

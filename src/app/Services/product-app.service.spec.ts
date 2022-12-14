@@ -27,7 +27,7 @@ describe('ProductAppService', () => {
       expect(result).toBeTruthy();
       expect(result.results).toBeTruthy();
       expect(result.results.length).toEqual(1);
-      console.log('result verified')
+      
     });
     const req = httpMock.expectOne(API_URL);
     expect(req.request.method).toBe('GET');

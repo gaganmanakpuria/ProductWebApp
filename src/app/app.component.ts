@@ -29,12 +29,12 @@ export class AppComponent {
     password:new FormControl("",[Validators.required,Validators.minLength(5), Validators.maxLength(15)]),
   });
   login(){
-    // console.log(this.logInForm)
+   
     this.productAppService.login({
       userName:this.logInForm.value.userName,
       password:this.logInForm.value.password
     }).subscribe({
-      next: (response: any) => { console.log(response);
+      next: (response: any) => { 
         localStorage.setItem('jwt',response);
         this.router.navigate(["/home"]);
         this.logInForm.reset();

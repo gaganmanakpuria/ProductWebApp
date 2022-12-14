@@ -29,7 +29,7 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     this.productAppService.getUserById(this.router.snapshot.params['id'])
         .subscribe((res:any)=>{
-          console.log(res)
+          
           this.editUserForm=new FormGroup({
             fullName:new FormControl(res["name"],[Validators.required,Validators.pattern("[a-zA-Z]*")]),
             userName:new FormControl(res["userName"],[Validators.required,Validators.pattern("[a-zA-Z].*")]),
@@ -70,7 +70,7 @@ export class EditUserComponent implements OnInit {
         }
       );
    
-    // console.log(this.editUserForm);
+    
   }
   get FullName():FormControl{
     return this.editUserForm.get("fullName") as FormControl;

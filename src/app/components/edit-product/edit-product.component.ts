@@ -25,7 +25,7 @@ status:any;
    ngOnInit(): void {
     this.productAppService.getProductById(this.activeRoute.snapshot.params['id'])
         .subscribe((res:any)=>{
-          console.log(res)
+          
           this.editProductForm=new FormGroup({
             name:new FormControl(res["name"],[Validators.required]),
             quantity:new FormControl(res["quantity"],[Validators.required]),
@@ -49,7 +49,7 @@ status:any;
 
       }).subscribe(
         res=>{
-          console.log(res);
+         
           this.toastr.success("Updated Successfully","",{
                   
             positionClass:'toast-top-right'
