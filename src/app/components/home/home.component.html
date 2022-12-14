@@ -17,32 +17,34 @@
     
     <h3 class="text-center my-3 ">Products</h3>
     <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()" placeholder="Search By Name....." class="mb-2">
-    <table class="table table-hover shadow shadow-lg ">
-
-        <thead>
-            <tr>
-                <th>Sr.No.</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Status</th>
-
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let i of allProducts| paginate:{itemsPerPage:5,currentPage:p};index as j">
-                <td>{{(p-1)*5+j+1}}</td>
-                <td>{{i.name}}</td>
-                <td>{{i.quantity}}</td>
-                <td>{{i.price}}</td>
-                <td>{{i.status}}</td>
-            </tr>
-
-        </tbody>
-
-
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover shadow shadow-lg ">
+    
+            <thead>
+                <tr>
+                    <th>Sr.No.</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Status</th>
+    
+    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of allProducts| paginate:{itemsPerPage:5,currentPage:p};index as j">
+                    <td>{{(p-1)*5+j+1}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.quantity}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.status}}</td>
+                </tr>
+    
+            </tbody>
+    
+    
+        </table>
+    </div>
     <div class="pagi text-center">
 
         <pagination-controls (pageChange)="p = $event"></pagination-controls>

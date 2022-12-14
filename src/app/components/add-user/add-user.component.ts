@@ -11,11 +11,20 @@ import { ProductAppService } from 'src/app/Services/product-app.service';
 })
 export class AddUserComponent implements OnInit {
   repeatPass:string='none'; 
+  users: [] = [];
+
+  uservalid:any=true;
+
+  username:string="";
+
+  arrayUsername: string[]=[];
+
+  
   constructor(private  productAppService:ProductAppService,private router:Router,private toastr: ToastrService) {
   }
   addUserForm=new FormGroup({
-     fullName:new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z]*")]),
-     userName:new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z].*")]),
+     fullName:new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z]*[ ]*[a-zA-Z]*")]),
+     userName:new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z].*"),this.chkuserValidator.bind(this)]),
      address:new FormControl("",[Validators.required]),
      city:new FormControl("",[Validators.required]),
      role:new FormControl("",[Validators.required]),
@@ -27,6 +36,27 @@ export class AddUserComponent implements OnInit {
    });
 
   ngOnInit(): void {
+    this.productAppService.getAllUsers()
+
+    .subscribe({
+
+      next: (user) => {
+
+       this.users = user;
+
+       this.arrayUsername = user.map((x:any) => x.userName.toLowerCase());
+
+       console.log(this.arrayUsername);
+
+      },
+
+      error: (response) => {
+
+        console.log(response);
+
+      }
+
+    });
   }
   
   addUserSubmitted(){
@@ -56,8 +86,18 @@ export class AddUserComponent implements OnInit {
     else{
       this.repeatPass="Inline";
     }
-    // console.log(this.addUserForm);
+  
   }
+ 
+  chkuserValidator(control:FormControl){
+    if(this.arrayUsername.indexOf(control.value.toLowerCase())!==-1){
+      return {'nameIsNotAllowed':true}
+    }
+    return null;
+  }
+
+
+
   get FullName():FormControl{
     return this.addUserForm.get("fullName") as FormControl;
   }

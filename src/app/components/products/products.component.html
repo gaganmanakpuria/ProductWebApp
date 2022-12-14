@@ -1,56 +1,63 @@
-<div class="container">
+<div class="container ">
+ <div class="row">
+    <div class="col-sm-12">
 
+        <h3 class="text-center my-3 ">Products</h3>
+        <button routerLink="/add_product" *ngIf="isManger('Manager')" class="p-2 my-3 rounded rounded-pill btn-outline-success "><i class="bi bi-plus-circle"></i> Add Product</button>
+        <div class="table-responsive">
+
+            <table class="table table-hover shadow shadow-lg "  >
+                    
+                <thead>
+                   <tr>  
+                    <th>Sr.No.</th>            
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th >
+                    <div *ngIf="isManger('Manager')">
+           
+                        Action
+                    </div>
+                </th>
+                    
+                   </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of allProducts| paginate:{itemsPerPage:5,currentPage:p};index as j" >
+                        <td>{{(p-1)*5+j+1}}</td>                
+                        <td>{{i.name}}</td>
+                        <td>{{i.quantity}}</td>
+                        <td>{{i.price}}</td>
+                        <td>
+                         <div class="input-group input-group-md">
+                             <select #status  [disabled]="isRole('User')" (change)="changeStatus(i.id, $event)" class=" form-control badge rounded-pill form-select text-dark fw-bold lh-base " >
+                                 <option value="Approve" [selected]=" 'Approve'== i.status">Approve</option>
+                                 <option value="Pending" [selected]=" 'Pending'== i.status" >Pending</option>
+                                 <option value="Reject" [selected]="'Reject' ==i.status">Reject</option>
+                             </select>
+                         </div>
+                        </td>
+                        <td *ngIf="isManger('Manager')"> 
+                        <div *ngIf="isManger('Manager')">
+           
+                            <a routerLink="/edit_product/{{i.id}}"    class=""><i class="bi bi-pencil-square p-1 rounded rounded-pill btn-outline-warning fs-5"></i> </a>     <a (click)="deleteProduct(i.id)"><i  class="bi bi-trash3  rounded rounded-pill btn-outline-danger fs-5"></i></a> 
+                        </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+                
+            </table>
+        </div>
+        <div class="pagi text-center" >
+       
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+       
+        </div>
+    </div>
+ </div>
    
 
-    <h3 class="text-center my-3 ">Products</h3>
-    <button routerLink="/add_product" *ngIf="isManger('Manager')" class="p-2 my-3 rounded rounded-pill btn-outline-success "><i class="bi bi-plus-circle"></i> Add Product</button>
-    <table class="table table-hover shadow shadow-lg "  >
-            
-        <thead>
-           <tr>  
-            <th>Sr.No.</th>            
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Status</th>
-            <th >
-            <div *ngIf="isManger('Manager')">
-
-                Action
-            </div>
-        </th>
-            
-           </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let i of allProducts| paginate:{itemsPerPage:5,currentPage:p};index as j" >
-                <td>{{(p-1)*5+j+1}}</td>                
-                <td>{{i.name}}</td>
-                <td>{{i.quantity}}</td>
-                <td>{{i.price}}</td>
-                <td>
-                 <div class="input-group input-group-md">
-                     <select #status  [disabled]="isRole('User')" (change)="changeStatus(i.id, $event)" class=" form-control badge rounded-pill form-select text-dark fw-bold lh-base " >
-                         <option value="Approve" [selected]=" 'Approve'== i.status">Approve</option>
-                         <option value="Pending" [selected]=" 'Pending'== i.status" >Pending</option>
-                         <option value="Reject" [selected]="'Reject' ==i.status">Reject</option>
-                     </select>
-                 </div>
-                </td>
-                <td *ngIf="isManger('Manager')"> 
-                <div *ngIf="isManger('Manager')">
-
-                    <a routerLink="/edit_product/{{i.id}}"    class=""><i class="bi bi-pencil-square p-1 rounded rounded-pill btn-outline-warning fs-5"></i> </a>     <a (click)="deleteProduct(i.id)"><i  class="bi bi-trash3  rounded rounded-pill btn-outline-danger fs-5"></i></a> 
-                </div>
-                </td>
-            </tr>
-            
-        </tbody>
-        
-    </table>
-    <div class="pagi text-center" >
-
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
-    </div>
 </div>

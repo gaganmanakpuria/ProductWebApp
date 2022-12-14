@@ -25,7 +25,10 @@
                 <a class="nav-link  " routerLink="/about"  routerLinkActive="active">About</a>
               </li>
             </ul>
-            <span> <div class="form-check form-switch">   <input *ngIf="jwt"  class="form-check-input opacity-10 bg-success border border-success" onclick="myFunction()"type="checkbox" role="switch" id="flexSwitchCheckDefault" checked></div></span>
+            <span> <div class="form-check form-switch"> 
+              <input *ngIf="jwt"  class="form-check-input opacity-10 bg-success border border-success" onclick="myFunction()"type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+              </div>
+            </span>
             <span class="navbar-text">
               <button class="p-2  rounded rounded-pill btn-outline-success" *ngIf="!jwt" data-bs-toggle="modal"    data-bs-target="#staticBackdrop"><i class="bi bi-person"></i> login</button>
               <button class="p-2  rounded rounded-pill btn-outline-danger " *ngIf="jwt" (click)="logOut()"><i class="bi bi-person"></i> logout</button>

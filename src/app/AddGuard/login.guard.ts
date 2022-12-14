@@ -11,19 +11,7 @@ export class LoginGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const token = localStorage.getItem("jwt");
-
-      // if (token && !this.jwtHelper.isTokenExpired(token)){
-
-      //   return true;
-
-      // }
-
-      // this.router.navigate(["/"]);
-      // window.location.reload();
-
-      // return false;
-     
+      const token = localStorage.getItem("jwt");         
 
       return this.productAppService.isLoggedin();
   }

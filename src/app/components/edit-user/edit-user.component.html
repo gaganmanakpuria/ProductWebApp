@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col">
                     <label for="userName">User Name</label>
-                    <input type="text" class="form-control" formControlName="userName" >
+                    <input type="text" class="form-control" formControlName="userName"  readonly>
                 </div>
                 <div class="form-text text-danger text-center" *ngIf="UserName.errors?.['required'] && (UserName.touched||UserName.dirty)">
                     UserName is required.
