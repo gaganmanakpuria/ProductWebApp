@@ -14,7 +14,7 @@ import { ProductAppService } from './Services/product-app.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TokenHandlerInterceptor } from './Interceptor/token-handler.interceptor';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { SearchPipe } from './search.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
@@ -39,7 +39,8 @@ import { ToastrModule } from 'ngx-toastr';
     PageNotFoundComponent,
     EditUserComponent,
     EditProductComponent,
-    AddProductComponent
+    AddProductComponent,
+    SearchPipe
     
   ],
   imports: [

@@ -16,7 +16,7 @@
 <div class="container" *ngIf="jwt">
     
     <h3 class="text-center my-3 ">Products</h3>
-    <input type="text" name="name" [(ngModel)]="name" (ngModelChange)="Search()" placeholder="Search By Name....." class="mb-2">
+    <input type="text"[(ngModel)]="searchText"  placeholder="Search...." class="mb-2">
     <div class="table-responsive">
         <table class="table table-hover shadow shadow-lg ">
     
@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let i of allProducts| paginate:{itemsPerPage:5,currentPage:p};index as j">
+                <tr *ngFor="let i of allProducts|search:searchText| paginate:{itemsPerPage:5,currentPage:p};index as j">
                     <td>{{(p-1)*5+j+1}}</td>
                     <td>{{i.name}}</td>
                     <td>{{i.quantity}}</td>

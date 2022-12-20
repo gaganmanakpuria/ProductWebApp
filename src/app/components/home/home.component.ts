@@ -8,6 +8,7 @@ import { ProductAppService } from 'src/app/Services/product-app.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  searchText='' ;
  active:any="activate";
  allProducts:any;
  name:any;
@@ -37,24 +38,24 @@ export class HomeComponent implements OnInit {
      
     }
   }
-  Search()
+  // Search()
 
-  {
+  // {
 
-    if(this.name==""){
+  //   if(this.name==""){
 
-      this.ngOnInit();
+  //     this.ngOnInit();
 
-    }else{
+  //   }else{
 
-      this.allProducts=this.allProducts.filter((r:any)=>{
+  //     this.allProducts=this.allProducts.filter((r:any)=>{
 
-        return r.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+  //       return r.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
 
-      })
+  //     })
 
-    }
+  //   }
 
-  }
+  // }
 
 }
