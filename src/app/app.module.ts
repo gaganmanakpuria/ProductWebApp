@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 // import { ToastrModule } from 'ngx-toastr';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -49,6 +50,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
     NgxPaginationModule,
     FormsModule,
     CommonModule,
