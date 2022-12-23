@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
           if (this.allProducts[i].status != 'Approve') {
             this.allProducts.splice(i, 1);
             this.allProducts.forEach((element: any) => {
+              
               element.name =
                 element.name.charAt(0).toUpperCase() + element.name.slice(1);
             });
